@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Donasi Page</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.1.0/css/all.min.css">
+    <style>
+        html {
+            background-image: url('https://telegra.ph/file/dd53361fa78a3fbeb07eb.jpg');
+            background-size: cover;
+            background-repeat: no-repeat;
+            background-attachment: fixed;
+        }
+
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            background-color: transparent;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            max-width: 600px;
+            margin: 0 auto;
+            padding: 20px;
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            box-shadow: 0 0 20px rgba(0, 0, 0, 0.2);
+            position: relative;
+        }
+
+        img.qr-code {
+            max-width: 100%;
+            height: auto;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.2);
+        }
+
+        .donate-button {
+            display: inline-block;
+            padding: 10px 20px;
+            background-color: #007bff;
+            color: #fff;
+            font-size: 18px;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            text-decoration: none;
+            transition: background-color 0.3s, transform 0.3s;
+        }
+
+        .donate-button:hover {
+            background-color: #0056b3;
+        }
+
+        .donate-button.clicked {
+            transform: scale(0.95);
+            animation: rippleEffect 0.5s ease; /* Animasi efek percikan */
+        }
+
+        @keyframes rippleEffect {
+            0% {
+                transform: scale(1);
+                opacity: 1;
+            }
+            100% {
+                transform: scale(2);
+                opacity: 0;
+            }
+        }
+
+        .social-icons {
+            margin-top: 20px;
+        }
+
+        .social-icons a {
+            margin: 0 10px;
+            font-size: 24px;
+            color: #333;
+            text-decoration: none;
+        }
+
+        .text-below-container {
+            background-color: rgba(255, 255, 255, 0.7);
+            border: 2px solid rgba(255, 255, 255, 0.5);
+            border-radius: 20px;
+            padding: 20px;
+            margin-top: 20px;
+            overflow: hidden;
+            white-space: nowrap;
+        }
+
+        .scrolling-text {
+            font-size: 18px;
+            white-space: nowrap;
+            overflow: hidden;
+            animation: scrollText 10s linear infinite; /* Animasi teks berjalan */
+        }
+
+        @keyframes scrollText {
+            0% {
+                transform: translateX(100%);
+            }
+            100% {
+                transform: translateX(-100%);
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1>Donasi</h1>
+        <p>Terima kasih atas dukungan Anda! Silakan scan QR Code atau klik tombol di bawah untuk berdonasi:</p>
+
+        <img class="qr-code" src="media/qr/qr.png" alt="QR Code Donasi">
+
+        <br><br>
+
+        <a href="notfound.html" target="_blank" class="donate-button" id="donateButton">
+            Donasi Sekarang
+        </a>
+
+        <div class="social-icons">
+            <a href="https://www.youtube.com/@alexpakel" target="_blank"><i class="fab fa-youtube"></i></a>
+            <a href="https://www.tiktok.com/@mcpakel" target="_blank"><i class="fab fa-tiktok"></i></a>
+            <a href="https://www.instagram.com" target="_blank"><i class="fab fa-instagram"></i></a>
+            <a href="https://discord.gg/NhvZj5YX" target="_blank"><i class="fab fa-discord"></i></a>
+            <a href="https://www.facebook.com" target="_blank"><i class="fab fa-facebook"></i></a>
+        </div>
+    </div>
+
+    <div class="text-below-container">
+        <p class="scrolling-text">Terimakasih Atas Donasi Anda.</p>
+    </div>
+
+    <script>
+        const donateButton = document.getElementById("donateButton");
+
+        donateButton.addEventListener("click", function() {
+            donateButton.classList.add("clicked");
+            
+            // Set timeout untuk menghapus class "clicked" setelah animasi selesai (0.5 detik)
+            setTimeout(function() {
+                donateButton.classList.remove("clicked");
+            }, 500);
+        });
+    </script>
+</body>
+</html>

@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Tebak Nama Negara</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+        }
+
+        #output {
+            font-size: 18px;
+            margin-bottom: 20px;
+        }
+
+        #flagImage {
+            font-size: 36px;
+            margin-top: 20px;
+        }
+
+        .buttonContainer {
+            margin-top: 20px;
+        }
+
+        .countryButton {
+            font-size: 16px;
+            padding: 5px 10px;
+            margin: 5px;
+            cursor: pointer;
+        }
+    </style>
+</head>
+<body>
+
+    <h1>Tebak Nama Negara</h1>
+    <p id="output">Klik tombol "Tebak Nama" untuk menampilkan nama dan bendera negara secara acak:</p>
+    <button onclick="showRandomCountry()" id="submitBtn">Tebak Nama</button>
+    <div id="flagImage"></div>
+    <p id="countryName"></p>
+    <div class="buttonContainer" id="buttonContainer"></div>
+
+    <script>
+        var countries = [
+            { name: "Indonesia", emoji: "🇮🇩" },
+            { name: "United States", emoji: "🇺🇸" },
+            // Tambahkan negara dan emoji lainnya di sini
+        ];
+
+        var currentCountry;
+
+        function getRandomElement(arr) {
+            return arr[Math.floor(Math.random() * arr.length)];
+        }
+
+        function showRandomCountry() {
+            currentCountry = getRandomElement(countries);
+            document.getElementById('flagImage').innerHTML = currentCountry.emoji;
+            document.getElementById('countryName').innerHTML = '';
+            document.getElementById('output').innerHTML = 'Tebak nama negara:';
+            
+            // Menampilkan tombol pilihan negara secara acak
+            var buttonContainer = document.getElementById('buttonContainer');
+            buttonContainer.innerHTML = '';
+            
+            for (var i = 0; i < 3; i++) {
+                var randomCountry = getRandomElement(countries);
+                var button = document.createElement('button');
+                button.className = 'countryButton';
+                button.innerHTML = randomCountry.name;
+                button.onclick = function() { checkAnswer(this.innerHTML); };
+                buttonContainer.appendChild(button);
+            }
+        }
+
+        function checkAnswer(answer) {
+            if (currentCountry.name === answer) {
+                document.getElementById('output').innerHTML = 'Selamat! Jawaban Anda benar.';
+                document.getElementById('output').style.color = 'green';
+            } else {
+                document.getElementById('output').innerHTML = 'Maaf, jawaban Anda salah. Coba lagi.';
+                document.getElementById('output').style.color = 'red';
+            }
+            showRandomCountry();
+        }
+    </script>
+
+</body>
+</html>

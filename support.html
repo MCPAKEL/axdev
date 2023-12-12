@@ -1,0 +1,218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Dukungan & Donasi Server Minecraft LandFox Official</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      min-height: 100vh;
+      background: url('https://telegra.ph/file/dd53361fa78a3fbeb07eb.jpg') no-repeat center center fixed;
+      background-size: cover;
+    }
+    .support-container {
+      background-color: rgba(255, 255, 255, 0.8);
+      backdrop-filter: blur(10px);
+      border-radius: 8px;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+      margin: 20px;
+      padding: 20px;
+      max-width: 600px;
+      text-align: center;
+    }
+
+    .support h2 {
+      color: #333;
+    }
+
+    .support p {
+      color: #666;
+    }
+
+    .support-links {
+      margin-top: 20px;
+    }
+
+    .support-link {
+      display: block;
+      margin: 10px 0;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-align: center;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .support-link:hover {
+      background-color: #0056b3;
+    }
+
+    .donate-container {
+      margin-top: 20px;
+      padding: 20px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+
+    .donate h3 {
+      color: #333;
+    }
+
+    .donate p {
+      color: #666;
+    }
+
+    .donate-button {
+      margin-top: 10px;
+      text-align: center;
+    }
+
+    .donate-btn {
+      display: inline-block;
+      padding: 10px 20px;
+      background-color: #007bff;
+      color: #fff;
+      text-decoration: none;
+      border-radius: 4px;
+      transition: background-color 0.3s ease;
+    }
+
+    .donate-btn:hover {
+      background-color: #0056b3;
+    }
+
+    .back-button {
+      margin-top: 20px;
+    }
+
+    .back-btn {
+      display: inline-flex;
+      align-items: center;
+      padding: 10px 20px;
+      background-color: #333;
+      color: #fff;
+      border: none;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: background-color 0.3s ease;
+    }
+
+    .back-btn:hover {
+      background-color: #555;
+    }
+
+    .back-icon {
+      margin-right: 10px;
+    }
+
+    .video-list {
+      margin-top: 20px;
+      max-width: 800px;
+    }
+
+    .video-item {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin: 10px 0;
+      padding: 10px;
+      background-color: #f0f0f0;
+      border-radius: 8px;
+    }
+
+    .video-icon {
+      font-size: 24px;
+      color: #333;
+      margin-bottom: 5px;
+    }
+
+    .video-embed {
+      width: 100%;
+      height: 200px;
+    }
+
+    .video-title {
+      color: #333;
+      font-weight: bold;
+    }
+  </style>
+  <script>
+    // Your JavaScript code here
+  </script>
+</head>
+<body>
+  <div class="support-container">
+    <h2>Dukungan Server Minecraft LandFox Official</h2>
+    <p>Terima kasih telah bergabung dengan server Minecraft LandFox Official. Jika Anda memiliki pertanyaan, saran, atau masalah teknis, kami siap membantu Anda.</p>
+    <div class="support-links">
+      <a href="https://www.youtube.com/@mcpakel" class="support-link">Kunjungi Channel YouTube Kami</a>
+      <a href="https://discord.gg/NhvZj5YX" class="support-link">Bergabung dengan Server Discord Kami</a>
+      <a href="https://chat.whatsapp.com/CtFTPr7U0PTL8gWwSBz1no" class="support-link">Hubungi Kami melalui WhatsApp</a>
+    </div>
+  </div>
+  <div class="donate-container">
+    <div class="donate">
+      <h3>Donasi untuk Server</h3>
+      <p>Apabila Anda ingin mendukung perkembangan dan pengelolaan server Minecraft LandFox Official, Anda dapat memberikan donasi. Setiap donasi sangat berarti bagi kami.</p>
+      <div class="donate-button">
+        <a href="donasi.html" class="donate-btn">Donasi Sekarang</a>
+      </div>
+    </div>
+  </div>
+  <div class="video-list" id="video-container"></div>
+  <div class="back-button">
+    <a href="dasbor.html" class="back-btn"><i class="fas fa-chevron-left back-icon"></i>Kembali</a>
+  </div>
+  <script>
+    // JavaScript code to fetch YouTube videos using API
+    const apiKey = 'AIzaSyDM9hyIAOYcZrQUyF8lwsei1B08JzXDjpg';
+    const channelId = 'YOUR_CHANNEL_ID';
+    const maxResults = 5;
+
+    const apiUrl = `https://www.googleapis.com/youtube/v3/search?key=${apiKey}&channelId=${channelId}&order=date&part=snippet&type=video&maxResults=${maxResults}`;
+
+    function createVideoElement(videoId, videoTitle) {
+      const videoItem = document.createElement('div');
+      videoItem.classList.add('video-item');
+
+      const videoFrame = document.createElement('iframe');
+      videoFrame.width = '300';
+      videoFrame.height = '169';
+      videoFrame.src = `https://www.youtube.com/embed/${videoId}`;
+      videoFrame.frameBorder = '0';
+      videoFrame.allowFullscreen = true;
+
+      const videoTitleElement = document.createElement('p');
+      videoTitleElement.textContent = videoTitle;
+
+      videoItem.appendChild(videoFrame);
+      videoItem.appendChild(videoTitleElement);
+
+      return videoItem;
+    }
+
+    fetch(apiUrl)
+      .then(response => response.json())
+      .then(data => {
+        const videoContainer = document.getElementById('video-container');
+
+        data.items.forEach(item => {
+          const videoId = item.id.videoId;
+          const videoTitle = item.snippet.title;
+          const videoElement = createVideoElement(videoId, videoTitle);
+          videoContainer.appendChild(videoElement);
+        });
+      })
+      .catch(error => console.error(error));
+  </script>
+</body>
+</html>

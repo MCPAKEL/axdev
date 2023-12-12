@@ -1,0 +1,397 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>List Video YouTube</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+  <style>
+    /* ... (style lainnya) */
+    body {
+  font-family: Arial, sans-serif;
+  background: url('https://telegra.ph/file/dd53361fa78a3fbeb07eb.jpg') no-repeat center center fixed;
+  background-size: cover;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+}
+
+.video-container {
+  background-color: rgba(255, 255, 255, 0.8);
+  backdrop-filter: blur(10px);
+  border-radius: 8px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  padding: 20px;
+  max-width: 800px;
+  text-align: center;
+}
+
+.upload-container {
+  margin-bottom: 20px;
+}
+
+.video-list {
+  margin-top: 20px;
+  max-width: 800px;
+}
+
+.video-item {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  margin: 10px 0;
+  padding: 10px;
+  background-color: #f0f0f0;
+  border-radius: 8px;
+  cursor: pointer;
+}
+
+.video-item.fullscreen {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: rgba(0, 0, 0, 0.8);
+  z-index: 1000;
+}
+
+.video-embed {
+  width: 100%;
+  height: 150px;
+  border: none;
+}
+
+.video-embed.fullscreen {
+  width: 80%;
+  height: 60%;
+}
+
+.video-title {
+  color: #333;
+  font-weight: bold;
+  margin-top: 10px;
+  text-align: center;
+}
+
+.video-title.fullscreen {
+  display: none;
+}
+
+.back-button {
+  margin-top: 20px;
+}
+
+.back-btn {
+  display: inline-flex;
+  align-items: center;
+  padding: 10px 20px;
+  background-color: #dd4b39;
+  color: #fff;
+  border: none;
+  border-radius: 4px;
+  cursor: pointer;
+  transition: background-color 0.3s ease;
+}
+
+.back-btn:hover {
+  background-color: #d73925;
+}
+
+.back-icon {
+  margin-right: 10px;
+}
+
+.pagination {
+  margin-top: 20px;
+}
+
+.page-btn {
+  display: inline-block;
+  margin: 0 5px;
+  padding: 5px 10px;
+  background-color: #333;
+  color: #fff;
+  text-decoration: none;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.video-icons {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  width: 100%;
+  margin-top: 5px;
+}
+
+.video-like {
+  display: flex;
+  align-items: center;
+  color: #777;
+}
+
+.video-like-icon {
+  margin-right: 5px;
+}
+
+.video-share {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.video-share-icon {
+  margin-right: 5px;
+}
+
+.video-delete {
+  display: flex;
+  align-items: center;
+  cursor: pointer;
+}
+
+.video-delete-icon {
+  margin-right: 5px;
+  color: #e74c3c; /* Warna merah untuk ikon hapus */
+}
+
+  </style>
+</head>
+<body>
+  <div class="video-container">
+    <h2>List Video YouTube - PARA PEMAIN</h2>
+    <p>Ini adalah daftar video YouTube Para Pemain. Lihat petualangan seru yang kami hadirkan!</p>
+
+    <!-- Input dan tombol untuk upload video -->
+    <div class="upload-container">
+      <label for="video-link">Masukkan Link Video YouTube Mu :):</label>
+      <input type="text" id="video-link" placeholder="https://www.youtube.com/watch?v=...">
+      <button onclick="uploadVideo()">Upload Video</button>
+    </div>
+
+    <div class="video-list" id="video-list">
+      <!-- Video yang sudah di-upload akan muncul di sini -->
+    </div>
+
+    <div class="pagination" id="pagination">
+    </div>
+    
+    <div class="back-button">
+      <a href="index.html" class="back-btn"><i class="fas fa-chevron-left back-icon"></i>Kembali</a>
+    </div>
+  </div>
+
+  <script>
+    document.addEventListener('DOMContentLoaded', () => {
+      const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+      savedVideos.forEach(video => displayVideo(video));
+    });
+
+    function displayVideo(video) {
+      const videoList = document.getElementById('video-list');
+
+      const newVideoItem = document.createElement('div');
+      newVideoItem.classList.add('video-item');
+
+      const newVideoEmbed = document.createElement('iframe');
+      newVideoEmbed.classList.add('video-embed');
+      newVideoEmbed.src = video.link;
+      newVideoEmbed.frameBorder = '0';
+      newVideoEmbed.allowFullscreen = true;
+
+      const newVideoTitle = document.createElement('span');
+      newVideoTitle.classList.add('video-title');
+      newVideoTitle.textContent = video.title;
+
+      const newVideoIcons = document.createElement('div');
+      newVideoIcons.classList.add('video-icons');
+
+      const newVideoLike = document.createElement('div');
+      newVideoLike.classList.add('video-like');
+      newVideoLike.innerHTML = `<i class="fas fa-thumbs-up video-like-icon"></i><span class="like-count">${video.likes}</span>`;
+
+      const newVideoShare = document.createElement('div');
+      newVideoShare.classList.add('video-share');
+      newVideoShare.innerHTML = `<i class="fas fa-share-alt video-share-icon"></i><span>Bagikan</span>`;
+      newVideoShare.onclick = () => shareVideo(video.link);
+
+      const newVideoDelete = document.createElement('div');
+      newVideoDelete.classList.add('video-delete');
+      newVideoDelete.innerHTML = `<i class="fas fa-trash-alt video-delete-icon"></i><span>Hapus</span>`;
+      newVideoDelete.onclick = () => deleteVideo(video.id, video.timestamp);
+
+      newVideoIcons.appendChild(newVideoLike);
+      newVideoIcons.appendChild(newVideoShare);
+      newVideoIcons.appendChild(newVideoDelete);
+
+      newVideoItem.appendChild(newVideoEmbed);
+      newVideoItem.appendChild(newVideoTitle);
+      newVideoItem.appendChild(newVideoIcons);
+
+      videoList.appendChild(newVideoItem);
+    }
+
+    function saveVideo(video) {
+      const timestamp = Date.now();
+      const videoWithTimestamp = { ...video, timestamp };
+
+      const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+      savedVideos.push(videoWithTimestamp);
+      localStorage.setItem('savedVideos', JSON.stringify(savedVideos));
+    }
+
+    function uploadVideo() {
+      const videoLinkInput = document.getElementById('video-link');
+      const videoLink = videoLinkInput.value;
+
+      if (isValidYouTubeLink(videoLink)) {
+        const videoId = getYouTubeVideoId(videoLink);
+
+        const apiUrl = `https://www.googleapis.com/youtube/v3/videos?id=${videoId}&part=snippet,statistics&key=AIzaSyDM9hyIAOYcZrQUyF8lwsei1B08JzXDjpg`;
+
+        fetch(apiUrl)
+          .then(response => response.json())
+          .then(data => {
+            if (data.items && data.items.length > 0) {
+              const videoTitle = data.items[0].snippet.title;
+              const videoLikes = data.items[0].statistics.likeCount;
+
+              const video = {
+                id: videoId,
+                title: videoTitle,
+                likes: videoLikes,
+                link: `https://www.youtube.com/embed/${videoId}?autoplay=0`
+              };
+
+              saveVideo(video);
+              displayVideo(video);
+              videoLinkInput.value = '';
+            }
+          })
+          .catch(error => {
+            console.error('Error fetching YouTube API:', error);
+            alert('Terjadi kesalahan saat mengambil informasi video dari YouTube. Coba lagi nanti.');
+          });
+      } else {
+        alert('Link video YouTube tidak valid. Pastikan Anda memasukkan link yang benar.');
+      }
+    }
+
+    function isValidYouTubeLink(link) {
+      return /^(?:https?:\/\/)?(?:www\.)?(?:youtu\.be\/)([^"&?\/\s]{11})(?:\?si=.+)?$/.test(link);
+    }
+
+    function getYouTubeVideoId(link) {
+      const match = link.match(/(?:youtu\.be\/)([^"&?\/\s]{11})(?:\?si=.+)?/);
+      return match ? match[1] : null;
+    }
+
+    function shareVideo(videoUrl) {
+      alert(`Video dibagikan! URL: ${videoUrl}`);
+    }
+
+    function deleteVideo(videoId, timestamp) {
+      const videoList = document.getElementById('video-list');
+
+      if (calculateTimeDifference(timestamp)) {
+        const videoItemToDelete = Array.from(videoList.children).find(item => {
+          const videoEmbed = item.querySelector('.video-embed');
+          const id = videoEmbed.src.split('/').pop().split('?')[0];
+          return id === videoId;
+        });
+
+        if (videoItemToDelete) {
+          videoList.removeChild(videoItemToDelete);
+        }
+
+        const savedVideos = JSON.parse(localStorage.getItem('savedVideos')) || [];
+        const updatedVideos = savedVideos.filter(video => video.id !== videoId);
+        localStorage.setItem('savedVideos', JSON.stringify(updatedVideos));
+      } else {
+        alert('Anda tidak dapat menghapus video setelah satu hari.');
+      }
+    }
+
+    function calculateTimeDifference(timestamp) {
+      const now = Date.now();
+      const difference = now - timestamp;
+      const oneDayInMilliseconds = 24 * 60 * 60 * 1000;
+
+      return difference < oneDayInMilliseconds;
+    }
+    
+  document.addEventListener('DOMContentLoaded', () => {
+    const videoItems = document.querySelectorAll('.video-item');
+    const videosPerPage = 5;
+
+    // Menentukan jumlah total halaman berdasarkan jumlah video dan video per halaman
+    const totalVideos = videoItems.length;
+    const totalPages = Math.ceil(totalVideos / videosPerPage);
+
+    // Membuat objek yang menyimpan indeks video untuk setiap halaman
+    const videoPages = {};
+    for (let i = 1; i <= totalPages; i++) {
+      const startIndex = (i - 1) * videosPerPage;
+      const endIndex = startIndex + videosPerPage;
+      videoPages[i] = Array.from(videoItems).slice(startIndex, endIndex);
+    }
+
+    // Memunculkan halaman pertama saat halaman dimuat
+    showPage(1);
+
+    // Menambahkan event listener untuk setiap tombol halaman
+    const pageButtons = document.querySelectorAll('.page-btn');
+    pageButtons.forEach(button => {
+      button.addEventListener('click', () => {
+        const pageNum = parseInt(button.textContent);
+        showPage(pageNum);
+      });
+    });
+
+    function showPage(pageNum) {
+      const videoList = document.querySelector('.video-list');
+
+      // Menampilkan video sesuai dengan halaman yang dipilih
+      videoPages[pageNum].forEach(item => {
+        item.style.display = 'block';
+        videoList.appendChild(item); // Memastikan video ditambahkan ke DOM
+      });
+
+      // Menyembunyikan video pada halaman sebelumnya
+      for (let i = 1; i <= totalPages; i++) {
+        if (i !== pageNum) {
+          videoPages[i].forEach(item => {
+            item.style.display = 'none';
+            videoList.removeChild(item); // Memastikan video dihapus dari DOM
+          });
+        }
+      }
+    }
+
+    function createPageButtons(totalPages) {
+      const paginationContainer = document.getElementById('pagination');
+
+      // Membuat tombol halaman sejumlah total halaman
+      for (let i = 1; i <= totalPages; i++) {
+        const pageButton = document.createElement('a');
+        pageButton.href = '#';
+        pageButton.classList.add('page-btn');
+        pageButton.textContent = i;
+        paginationContainer.appendChild(pageButton);
+      }
+    }
+
+    // Tambahkan tombol halaman
+    createPageButtons(totalPages);
+  });
+</script>
+</body>
+</html>

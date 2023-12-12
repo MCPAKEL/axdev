@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link rel="stylesheet" href="script/screenshot.css">
+<title>Screenshot</title>
+</head>
+<body>
+<audio id="imageSound" preload="auto">
+  <source src="media/sound/klik.mp3" type="audio/mpeg">
+</audio>
+<div class="header">
+  <h1>Selamat datang di List Gambar</h1>
+  <div class="search-bar">
+    <input type="text" id="searchInput" placeholder="Cari gambar...">
+    <button id="searchButton"><i class="fas fa-search"></i> Cari</button>
+  </div>
+</div>
+<div class="gallery">
+  <div class="item" data-title="MC SWORD" onclick="showLargeImage('media/gambar/foto1.jpg', 'MC SWORD', 'Ini adalah deskripsi Foto 1')">
+    <img src="media/gambar/foto1.jpg" alt="Foto 1">
+    <h3>MC SWORD</h3>
+    <p>Ini adalah deskripsi Foto 1</p>
+  </div>
+  <div class="item" data-title="LANDFOX" onclick="showLargeImage('media/gambar/foto2.jpg', 'LANDFOX', 'Ini adalah deskripsi Foto 2')">
+    <img src="media/gambar/foto2.jpg" alt="Foto 2">
+    <h3>LANDFOX</h3>
+    <p>Ini adalah deskripsi Foto 2</p>
+  </div>
+  <!-- Tambahkan elemen .item lainnya sesuai kebutuhan -->
+</div>
+<div class="pagination">
+  <button class="page-btn" id="prevBtn">Sebelumnya</button>
+  <button class="page-btn" id="nextBtn">Berikutnya</button>
+</div>
+<div class="overlay" id="overlay">
+  <div class="overlay-content">
+    <button id="closeBtn" class="close-button">KEMBALI</button>
+    <img id="overlay-img" src="" alt="Large Image">
+    <h3 id="overlay-title">Judul Gambar</h3>
+    <p id="overlay-description">Deskripsi Gambar</p>
+    <div class="icon-buttons">
+      <a href="#" class="icon-button" id="downloadBtn"><i class="fas fa-download"></i></a>
+      <a href="#" class="icon-button" id="shareBtn"><i class="fas fa-share-alt"></i></a>
+      <a href="#" class="icon-button" id="likeBtn"><i class="fas fa-heart"></i></a>
+    </div>
+  </div>
+</div>
+<div class="not-found-message" id="notFoundMessage">NAMA GAMBAR TIDAK DIKETAHUI</div>
+<img class="not-found-image" src="media/404/notfound.jpg" alt="Gambar Placeholder" id="notFoundImage">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.3/js/all.min.js"></script>
+<script src="script/screenshot.js"></script>
+</body>
+</html>
