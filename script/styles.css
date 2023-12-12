@@ -1,0 +1,474 @@
+body {
+    font-family: 'Minecraftia', sans-serif;
+    margin: 0;
+    padding: 0;
+    background: url('https://telegra.ph/file/2a46a0d16133c035e062e.jpg') center/cover no-repeat fixed;
+    color: #fff;
+}
+
+header {
+    background-color: rgba(51, 51, 51, 0.7);
+    padding: 15px;
+    text-align: center;
+}
+
+h1 {
+    margin: 0;
+    font-size: 2.5em;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    letter-spacing: 2px;
+    color: #0f82f7;
+}
+
+nav ul {
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+}
+
+nav ul li {
+    display: inline;
+    margin-right: 10px;
+}
+
+nav a {
+    text-decoration: none;
+    color: #fff;
+}
+
+/* Tombol umum */
+button, input[type="button"], input[type="submit"], .button {
+    background-color: #333;
+    color: #fff;
+    padding: 10px 15px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    text-decoration: none;
+    display: inline-block;
+}
+
+/* Hover effect untuk tombol umum */
+button:hover, input[type="button"]:hover, input[type="submit"]:hover, .button:hover {
+    background-color: #555;
+}
+
+/* Tombol di navigasi */
+nav a.button {
+    background-color: #555;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+/* Hover effect untuk tombol di navigasi */
+nav a.button:hover {
+    background-color: #777;
+}
+
+.main-content {
+    max-width: 800px;
+    margin: 20px auto;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    text-align: center;
+}
+
+.main-content h2 {
+    color: #ff8c00;
+}
+
+.main-content p {
+    color: #0f82f7;
+}
+
+.main-content .info-frame {
+    background-color: #333;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+}
+
+.main-content .info-frame h3 {
+    color: #ff8c00;
+}
+
+.main-content .info-frame p {
+    color: #fff;
+}
+
+.main-content a.button {
+    margin-top: 20px;
+}
+
+/* Tombol untuk tampilan HP */
+@media (max-width: 600px) {
+    .main-content a.button,
+    .additional-info .info-frame {
+        margin-top: 10px;
+    }
+}
+
+.additional-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    margin-top: 20px;
+}
+
+.additional-info .info-frame {
+    flex: 0 1 calc(30% - 20px);
+    background-color: #333;
+    padding: 20px;
+    margin: 10px;
+    border-radius: 8px;
+}
+
+.additional-info .info-frame h3 {
+    color: #ff8c00;
+}
+
+.additional-info .info-frame p {
+    color: #fff;
+}
+
+.footer {
+    background-color: rgba(51, 51, 51, 0.7);
+    text-align: center;
+    padding: 10px;
+    position: fixed;
+    bottom: 0;
+    width: 100%;
+}
+
+.social-icons {
+    margin-top: 10px;
+}
+
+.social-icon {
+    font-size: 24px;
+    margin-right: 10px;
+    color: #fff;
+    text-decoration: none;
+}
+
+/* Tombol untuk tampilan HP di footer */
+@media (max-width: 600px) {
+    .footer .social-icons {
+        flex-direction: column;
+    }
+    
+    .footer .social-icon {
+        margin-bottom: 10px;
+    }
+}
+/* ... (CSS ANGGOTA) */
+
+.member-content .team-member {
+    position: relative;
+    overflow: hidden;
+    background-color: #444;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: center;
+    border: 2px solid #555;
+    transition: transform 0.3s ease-in-out;
+}
+
+.member-content .team-member:hover {
+    transform: scale(1.05);
+}
+
+.member-content .avatar-container {
+    position: relative;
+}
+
+.member-content .avatar-container img.avatar {
+    width: 100px; /* Sesuaikan ukuran avatar sesuai kebutuhan */
+    border-radius: 50%;
+    border: 2px solid #ff8c00;
+    margin-bottom: 10px;
+}
+
+.member-content .avatar-container .video-overlay {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5); /* Warna latar belakang overlay */
+}
+
+.member-content .avatar-container video.background-video {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    z-index: -1; /* Letakkan video di belakang elemen avatar */
+}
+
+/* ... (CSS ACARA selanjutnya) */
+/* ... (CSS ACARA) */
+
+.event-content {
+    max-width: 800px;
+    margin: 0 auto;
+}
+
+.event {
+    background-color: #444;
+    padding: 20px;
+    margin: 20px 0;
+    border-radius: 8px;
+    text-align: left;
+    border: 2px solid #555;
+    transition: transform 0.3s ease-in-out;
+    display: flex;
+    align-items: center;
+}
+
+.event:hover {
+    transform: scale(1.05);
+}
+
+.event-image {
+    width: 150px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+    margin-right: 20px;
+}
+
+.event-details {
+    flex-grow: 1;
+}
+
+.event h3 {
+    color: #ff8c00;
+}
+
+.event-date {
+    color: #777;
+    margin-top: 5px;
+}
+
+.event-description {
+    color: #eee;
+    margin-top: 10px;
+}
+
+.event-button {
+    background-color: #555;
+    padding: 8px 12px;
+    border-radius: 5px;
+    text-decoration: none;
+    color: #fff;
+    cursor: pointer;
+    border: none;
+}
+
+.event-button:hover {
+    background-color: #777;
+}
+
+/* ... (CSS selanjutnya) */
+/* ... (CSS LIVE sebelumnya) */
+/* ... (CSS sebelumnya) */
+
+.youtube-video {
+    width: calc(33.3333% - 20px);
+    margin-right: 20px;
+    margin-bottom: 20px;
+}
+
+.video-frame {
+    position: relative;
+    overflow: hidden;
+    border: 4px solid #333;
+    border-radius: 8px;
+}
+
+.video-frame iframe {
+    width: 100%;
+    height: 100%;
+}
+
+.youtube-video h3 {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #333;
+}
+
+/* ... (CSS selanjutnya) */
+
+
+
+.live-row {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+}
+
+.youtube-video {
+    width: calc(33.3333% - 20px);
+    margin-right: 20px;
+    position: relative;
+    overflow: hidden;
+}
+
+.youtube-video iframe {
+    width: 100%;
+    height: 100%;
+}
+
+/* ... (CSS selanjutnya) */
+/* ... (CSS sebelumnya) */
+
+/* Contact Page Styles */
+
+.contact-content {
+    text-align: center;
+    padding: 50px 0;
+}
+
+.contact-content h2 {
+    color: #fff;
+}
+
+.contact-info {
+    max-width: 600px;
+    margin: 0 auto 40px;
+}
+
+.contact-info p {
+    color: #ffff;
+    font-size: 18px;
+}
+
+.contact-form {
+    max-width: 600px;
+    margin: 0 auto;
+}
+
+form {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+label {
+    margin-top: 10px;
+    font-size: 16px;
+    color: #fff;
+}
+
+input,
+textarea {
+    width: 100%;
+    padding: 10px;
+    margin-top: 8px;
+    margin-bottom: 20px;
+    border: 1px solid #fff;
+    border-radius: 4px;
+    box-sizing: border-box;
+    font-size: 16px;
+}
+
+.submit-button {
+    background-color: #3498db;
+    color: #fff;
+    border: none;
+    padding: 10px 20px;
+    font-size: 18px;
+    border-radius: 4px;
+    cursor: pointer;
+}
+
+.submit-button:hover {
+    background-color: #2186c9;
+}
+
+/* ... (CSS selanjutnya) */
+/* styles.css */
+
+/* ... (kode CSS sebelumnya) ... */
+
+.footer-buttons {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    margin-top: 20px;
+}
+
+/* styles.css */
+
+/* ... (kode CSS sebelumnya) ... */
+
+/* styles.css */
+
+/* ... (kode CSS sebelumnya) ... */
+
+.button-link {
+    text-decoration: none;
+    padding: 15px; /* Menambahkan ruang di sekitar teks */
+    border-radius: 5px; /* Memberikan sudut melengkung pada tombol */
+}
+
+.button-link .icon-frame {
+    padding: 15px;
+    border-radius: 20px; /* Agar lebih oval */
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.button-link .icon-info {
+    color: #fff; /* Warna teks tombol menjadi putih */
+}
+
+.button-link.active .icon-frame {
+    transform: scale(1.2);
+    background-color: inherit; /* Menggunakan warna latar belakang dari elemen ikon */
+}
+
+.icon-frame {
+    border: 2px solid #333;
+    border-radius: 20px; /* Agar lebih oval */
+    padding: 15px;
+    margin-top: 20px;
+    text-align: center;
+    transition: transform 0.3s;
+}
+
+.icon-frame img {
+    width: 80px;
+    height: 80px;
+    border-radius: 50%;
+    object-fit: cover;
+    margin-bottom: 10px;
+}
+
+.icon-info {
+    color: #333;
+    font-weight: bold;
+}
+
+
+/* Menggunakan media query untuk perangkat berukuran kecil (HP) */
+@media only screen and (max-width: 600px) {
+    .footer-buttons {
+        flex-direction: column; /* Menata tombol ke dalam satu kolom */
+        align-items: center;
+    }
+
+    .icon-frame {
+        margin: 10px 0;
+    }
+
+    .icon-frame img {
+        width: 60px;
+        height: 60px;
+    }
+}

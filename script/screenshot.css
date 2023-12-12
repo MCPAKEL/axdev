@@ -1,0 +1,208 @@
+
+  body {
+    background-image: url('https://telegra.ph/file/2a46a0d16133c035e062e.jpg');
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-attachment: fixed;
+    background-position: center;
+    font-family: Arial, sans-serif;
+    margin: 0;
+    padding: 0;
+  }
+  .header {
+    text-align: center;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin: 20px;
+  }
+  .header h1 {
+    margin: 0;
+  }
+  .search-bar {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-top: 20px;
+  }
+  .search-bar input[type="text"] {
+    width: 300px;
+    padding: 10px;
+    border: none;
+    border-radius: 5px;
+    font-size: 16px;
+  }
+  .search-bar button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    border-radius: 5px;
+    padding: 10px 20px;
+    margin-left: 10px;
+    cursor: pointer;
+  }
+  .gallery {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 20px;
+    padding: 20px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 10px;
+    margin: 20px;
+  }
+  .item {
+    border: 1px solid #ccc;
+    padding: 10px;
+    text-align: center;
+    position: relative;
+    cursor: pointer;
+    background-color: rgba(255, 255, 255, 0.6);
+    border-radius: 5px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+  }
+  .item img {
+    max-width: 100%;
+    max-height: 100%;
+    border: 1px solid #fff;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+  }
+  .item h3 {
+    margin: 10px 0;
+    font-size: 18px;
+  }
+  .item p {
+    margin: 5px 0;
+    font-size: 14px;
+  }
+  /* Tampilan gambar di tengah-tengah */
+  .item img {
+    align-self: center;
+  }
+  .pagination {
+    display: flex;
+    justify-content: center;
+    margin-top: 20px;
+  }
+  .page-btn {
+    padding: 8px 16px;
+    margin: 0 5px;
+    border: 1px solid #ccc;
+    cursor: pointer;
+  }
+  .overlay {
+    display: none;
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.7);
+    z-index: 999;
+    justify-content: center;
+    align-items: center;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+  }
+  .overlay.active {
+    display: flex;
+    opacity: 1;
+  }
+  .overlay-content {
+    text-align: center;
+    background: #fff;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  }
+  .overlay img {
+    max-width: 90%;
+    max-height: 60vh;
+    border: 5px solid #fff;
+  }
+  .overlay h3 {
+    font-size: 24px;
+    margin: 10px 0;
+  }
+  .overlay p {
+    font-size: 16px;
+    margin: 10px 0;
+  }
+  /* Tambahkan gaya untuk tombol-tombol ikon */
+  .icon-button {
+    text-decoration: none;
+    color: #333;
+    margin: 10px;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  /* Perbarui gaya untuk tombol-tombol ikon */
+  .icon-buttons {
+    display: flex;
+    justify-content: space-between;
+    margin-top: 20px;
+  }
+  .icon-button {
+    text-decoration: none;
+    color: #333;
+    font-size: 24px;
+    display: flex;
+    align-items: center;
+    padding: 10px;
+    border-radius: 5px;
+    transition: background-color 0.3s, color 0.3s;
+  }
+  .icon-button i {
+    margin-right: 5px;
+  }
+  .icon-button:hover {
+    background-color: #007bff;
+    color: #fff;
+    cursor: pointer;
+  }
+  /* Gaya tambahan untuk membuat tombol-tombol lebih dekat dengan bingkai */
+  .icon-buttons {
+    margin-top: 10px;
+    padding: 10px;
+    background-color: rgba(255, 255, 255, 0.8);
+    border-radius: 5px;
+    justify-content: space-between;
+  }
+  /* Gaya tambahan untuk tombol "KEMBALI" */
+  .close-button {
+    background-color: #007bff; /* Warna tombol biru */
+    color: #fff;
+    font-size: 16px;
+    padding: 10px 20px;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s;
+    position: absolute;
+    bottom: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+  }
+  .close-button:hover {
+    background-color: #0056b3; /* Warna biru yang lebih gelap saat dihover */
+  }
+  /* Gaya untuk pesan "NAMA GAMBAR TIDAK DIKETAHUI" */
+  .not-found-message {
+    display: none;
+    text-align: center;
+    font-size: 18px;
+    color: yellow;
+    margin-top: 10px;
+  }
+  .not-found-image {
+    display: none;
+    max-width: 100px;
+    height: auto;
+    margin-top: 10px;
+  }
